@@ -1,4 +1,4 @@
-# GitHub API Epicodus Code Review Project
+# GitHub API Epicodus Code Review Project (Javascript Week 1)
 
 #### 05/27/2016
 
@@ -16,6 +16,11 @@ A website that makes use of the github api to allow the user to input the userna
 * In your terminal run **npm install, bower install, gulp build, and gulp serve**
 * A local web server should automatically open in your browser with the website loaded if you have a browser open
 
+## API Key Setup Requirements
+
+* Create a file in the top level of your project directory called .env file to hold your API key. Paste your API key in your .env file that you just created and store it in an exported property named apiKey.
+* Here's an .env (hidden file) file example: exports.apiKey = "YOUR-API-KEY-GOES-HERE";
+* Make sure to add the following to your .js file using the API key: var apiKey = require('./../.env').apiKey;
 
 ## Future Improvements
 
