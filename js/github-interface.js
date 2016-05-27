@@ -4,8 +4,9 @@ var Github = require('./../js/github.js').Github;
 $(document).ready(function() {
 
   $("#userFind").click(function() {
-    var newUser = new Github($("#user").val());
+    var newUser = new Github($("#user").val())
     newUser.getUser();
+    newUser.getAvatar();
     newUser.getRepos();
-  });
+  })
 });
