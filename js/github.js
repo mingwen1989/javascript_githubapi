@@ -1,18 +1,25 @@
 var apiKey = require('./../.env').apiKey;
 
-exports.Github = function() {
-}
+exports.Github = function(user) {
+		this.user = user;
+};
 
-exports.Github.prototype.getRepos = function(user){
+exports.Github.prototype.getUser = function() {
+  $.get('https://api.github.com/users/' + this.user + '?access_token=' + apiKey).then(function(response){
+  			$("userName").html("<h3>Username: " + response.login + "</h3>");
+  }).fail(function(error){
+    console.log(error.responseJSON.message);
+  });
+};
 
+exports.Github.prototype.getRepos = function(){
+  $.get('https://api.github.com/users/' + this.user + '/repos?access_token=' + apiKey).then(function(response){
+  		
+  		response.forEach( function(repo) {
+  			$("userRepos").append("<h4>" + repo.name + "</h4>");
+  			$("userRepos").append("<h4>" + repo.description + "</h4>");
+    });
 
-  $.get('https://api.github.com/users/' + user + '/repos?access_token=' + apiKey).then(function(response){
-    for (i=0; i < response.length; i++){
-    	names = response[i].name;
-    	descriptions = response[i].description;
-    	console.log(names);
-    	console.log(descriptions);
-    }
   }).fail(function(error){
     console.log(error.responseJSON.message);
   });
