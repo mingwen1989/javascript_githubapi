@@ -21,7 +21,7 @@ exports.Github.prototype.getAvatar = function() {
 };
 
 exports.Github.prototype.getRepos = function(){
-  $.get('https://api.github.com/users/' + this.user + '/repos?access_token=' + apiKey).then(function(response){
+  $.get('https://api.github.com/users/' + this.user + '/repos?access_token=' + apiKey + '&per_page=100').then(function(response){
   		
   		response.forEach( function(repo) {
 			if(repo.description.length>1){
